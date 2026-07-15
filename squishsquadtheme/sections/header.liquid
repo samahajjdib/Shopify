@@ -1,0 +1,52 @@
+<header class="site-header">
+  {% if section.settings.announcement != blank %}
+    <div class="announcement-bar">{{ section.settings.announcement }}</div>
+  {% endif %}
+  <div class="site-header__inner container">
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      {% if section.settings.logo %}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="140">
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main menu">
+      <ul>
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <a href="{{ routes.cart_url }}" class="site-header__cart" aria-label="Cart">
+      {% render 'icon-cart' %}
+      <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+    </a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Announcement bar text",
+      "default": "Free shipping on orders over $35 - squish responsibly"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,50 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search squishy stuff...",
+      "submit": "Search"
+    },
+    "cart": {
+      "title": "Your Squish Bag",
+      "empty": "Your bag is empty. Time to fix that.",
+      "continue_shopping": "Keep shopping",
+      "checkout": "Check out",
+      "subtotal": "Subtotal",
+      "remove": "Remove"
+    },
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_password_button": "Enter"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "view_details": "View details"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No squishies found here yet — check back soon!"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Free shipping on orders over $35"
+    },
+    "footer": {
+      "newsletter_heading": "Join the Squish Squad",
+      "newsletter_text": "New drops, restocks, and squish news. No spam, we promise.",
+      "newsletter_placeholder": "Your email",
+      "newsletter_button": "Sign up"
+    },
+    "hero": {
+      "default_heading": "Squeeze the stress away",
+      "default_subheading": "Needoh-style squishable toys made for fidgety hands and big feelings.",
+      "default_button": "Shop the collection"
+    }
+  }
+}
