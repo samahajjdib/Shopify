@@ -1,0 +1,85 @@
+<footer class="footer">
+  <div class="footer__newsletter" style="background: {{ section.settings.newsletter_bg }};">
+    <div class="container footer__newsletter-inner">
+      <div>
+        <h2 class="footer__heading">{{ section.settings.newsletter_heading }}</h2>
+        <p>{{ section.settings.newsletter_text }}</p>
+      </div>
+      {%- form 'customer', class: 'footer__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="footer__success">{{ 'sections.footer.newsletter_success' | t }}</p>
+        {%- else -%}
+          <div class="inline-form">
+            <input type="email" name="contact[email]" placeholder="{{ 'sections.footer.newsletter_placeholder' | t }}" aria-label="{{ 'sections.footer.newsletter_placeholder' | t }}" required>
+            <button type="submit" class="btn btn--primary">{{ 'sections.footer.newsletter_button' | t }}</button>
+          </div>
+          {{ form.errors | default_errors }}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+
+  <div class="footer__main container">
+    <div class="footer__brand">
+      {% render 'logo' %}
+      <p class="footer__tagline">{{ section.settings.tagline }}</p>
+      <div class="footer__social">
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook">{% render 'icon', name: 'facebook' %}</a>{%- endif -%}
+      </div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- assign menu = linklists[block.settings.menu] -%}
+      <div class="footer__col" {{ block.shopify_attributes }}>
+        <h3 class="footer__col-heading">{{ block.settings.heading }}</h3>
+        <ul>
+          {%- for link in menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="footer__bottom container">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.disclaimer }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Join the good mood club" },
+    { "type": "text", "id": "newsletter_text", "label": "Newsletter text", "default": "Get 10% off your first order, plus new flavour drops and wellness tips." },
+    { "type": "color", "id": "newsletter_bg", "label": "Newsletter background", "default": "#F6E1E4" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Good mood. Daily." },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "These statements have not been evaluated by a health authority. This product is not intended to diagnose, treat, cure or prevent any disease."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "default": {
+    "blocks": [
+      { "type": "menu", "settings": { "heading": "Shop", "menu": "main-menu" } },
+      { "type": "menu", "settings": { "heading": "Help", "menu": "footer" } }
+    ]
+  }
+}
+{% endschema %}

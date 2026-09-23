@@ -1,0 +1,71 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "انتقل إلى المحتوى"
+    },
+    "header": {
+      "menu": "القائمة",
+      "language": "اللغة",
+      "country": "الدولة / العملة",
+      "account": "الحساب"
+    },
+    "search": {
+      "title": "البحث",
+      "placeholder": "ابحثي في أنسية",
+      "submit": "بحث",
+      "no_results": "لا توجد نتائج لـ \"{{ terms }}\". جرّبي كلمة أخرى."
+    },
+    "cart": {
+      "title": "حقيبتك",
+      "empty": "حقيبتك فارغة. لنجد نكهتك المفضلة.",
+      "continue_shopping": "تسوّقي الآن",
+      "checkout": "إتمام الشراء",
+      "update": "تحديث الحقيبة",
+      "subtotal": "المجموع الفرعي",
+      "savings": "وفّرتِ",
+      "taxes_note": "تُحتسب الضرائب والشحن عند الدفع.",
+      "remove": "إزالة"
+    },
+    "404": {
+      "script": "عذراً",
+      "title": "الصفحة غير موجودة",
+      "text": "لم نتمكن من العثور على الصفحة التي تبحثين عنها.",
+      "button": "العودة إلى الرئيسية"
+    },
+    "password_page": {
+      "password": "كلمة المرور",
+      "login_password_button": "دخول"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "أضيفي إلى الحقيبة",
+      "added": "تمت الإضافة ✓",
+      "error": "حدث خطأ أثناء الإضافة. يرجى المحاولة مرة أخرى.",
+      "sold_out": "نفدت الكمية",
+      "unavailable": "غير متوفر",
+      "quantity": "الكمية",
+      "one_time": "شراء لمرة واحدة",
+      "reviews": "تقييم",
+      "sale": "تخفيض",
+      "from": "من",
+      "shop_now": "تسوّقي الآن"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "لا توجد منتجات هنا بعد. عودي قريباً!"
+    }
+  },
+  "sections": {
+    "featured": {
+      "placeholder": "أضيفي منتجاتك لعرضها هنا",
+      "view_all": "عرض الكل"
+    },
+    "footer": {
+      "newsletter_placeholder": "بريدك الإلكتروني",
+      "newsletter_button": "اشتركي",
+      "newsletter_success": "شكراً لكِ! تفقّدي بريدك للحصول على هدية الترحيب."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badge_bestseller": { "type": "badge", "settings": { "text": "BEST\nSELLER", "color": "#E6DFF5" } },
+        "badge_vegan": { "type": "badge", "settings": { "text": "100%\nVEGAN", "color": "#DDEEDC" } },
+        "badge_ratio": { "type": "badge", "settings": { "text": "4:1\nRATIO", "color": "#F6E1E4" } },
+        "feature_vegan": { "type": "feature", "settings": { "icon": "leaf", "text": "Vegan" } },
+        "feature_colors": { "type": "feature", "settings": { "icon": "no-color", "text": "No Artificial Colors" } },
+        "feature_gluten": { "type": "feature", "settings": { "icon": "wheat", "text": "Gluten Free" } },
+        "tab_ingredients": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "What's inside",
+            "content": "<p>Myo-Inositol, D-Chiro Inositol (4:1 ratio), Magnesium, Vitamin B Complex, Botanical Extracts. Naturally flavoured.</p>",
+            "open": true
+          }
+        },
+        "tab_how": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "How to use",
+            "content": "<p>Mix 1 sachet (7g) into a glass of water once a day. Stir, sip and enjoy. Best taken daily for lasting results.</p>"
+          }
+        },
+        "tab_shipping": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Shipping & returns",
+            "content": "<p>Free shipping on orders over $50. Not in love? Contact us within 30 days.</p>"
+          }
+        }
+      },
+      "block_order": ["badge_bestseller", "badge_vegan", "badge_ratio", "feature_vegan", "feature_colors", "feature_gluten", "tab_ingredients", "tab_how", "tab_shipping"],
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "lotus", "title": "Hormonal Balance", "text": "Supports a healthy, regular cycle." } },
+        "b2": { "type": "benefit", "settings": { "icon": "bolt", "title": "Energy & Focus", "text": "Helps steady your energy through the day." } },
+        "b3": { "type": "benefit", "settings": { "icon": "face", "title": "Clear Skin & Mood", "text": "Feel good in your skin, inside and out." } },
+        "b4": { "type": "benefit", "settings": { "icon": "gut", "title": "Gut Health", "text": "Gentle on your tummy, with no artificial colors." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "More energy. Brighter days.",
+        "heading": "One sachet, four good things",
+        "background": "#F6E1E4"
+      }
+    }
+  },
+  "order": ["main", "benefits"]
+}

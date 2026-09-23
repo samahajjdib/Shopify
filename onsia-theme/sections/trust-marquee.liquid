@@ -1,0 +1,75 @@
+{%- comment -%} Scrolling strip of trust badges, e.g. Vegan / Gluten free / No artificial colors {%- endcomment -%}
+<section class="marquee" style="--marquee-bg: {{ section.settings.background }}; --marquee-speed: {{ section.settings.speed }}s;">
+  <div class="marquee__track">
+    {%- for i in (1..2) -%}
+      <ul class="marquee__list"{% if i == 2 %} aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <li class="marquee__item" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>
+            <span class="marquee__icon">{% render 'icon', name: block.settings.icon %}</span>
+            {{ block.settings.text }}
+          </li>
+        {%- endfor -%}
+        {%- comment -%} Repeat short lists so the strip is always wider than the screen {%- endcomment -%}
+        {%- if section.blocks.size < 6 -%}
+          {%- for block in section.blocks -%}
+            <li class="marquee__item" aria-hidden="true">
+              <span class="marquee__icon">{% render 'icon', name: block.settings.icon %}</span>
+              {{ block.settings.text }}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges strip",
+  "tag": "div",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#E6DFF5" },
+    { "type": "range", "id": "speed", "label": "Scroll duration (higher = slower)", "min": 10, "max": 80, "step": 5, "unit": "s", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "leaf",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "no-color", "label": "No artificial colors" },
+            { "value": "wheat", "label": "Wheat" },
+            { "value": "flask", "label": "Lab flask" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "lotus", "label": "Lotus" },
+            { "value": "bolt", "label": "Energy bolt" },
+            { "value": "face", "label": "Face" },
+            { "value": "gut", "label": "Gut" },
+            { "value": "glass", "label": "Glass" }
+          ]
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "100% Vegan" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust badges strip",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "leaf", "text": "100% Vegan" } },
+        { "type": "badge", "settings": { "icon": "no-color", "text": "No Artificial Colors" } },
+        { "type": "badge", "settings": { "icon": "wheat", "text": "Gluten Free" } },
+        { "type": "badge", "settings": { "icon": "flask", "text": "4:1 Inositol Ratio" } },
+        { "type": "badge", "settings": { "icon": "glass", "text": "Mix & Go Sachets" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,52 @@
+<section class="section checklist" style="--grad-from: {{ section.settings.gradient_from }}; --grad-to: {{ section.settings.gradient_to }};">
+  <div class="container checklist__inner{% if section.settings.image_position == 'right' %} checklist__inner--reverse{% endif %}">
+    <div class="checklist__media">
+      {%- if section.settings.image -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: class: 'checklist__image', loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1400' }}
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'checklist__image checklist__image--placeholder' }}
+      {%- endif -%}
+    </div>
+    <ul class="checklist__list">
+      {%- for block in section.blocks -%}
+        <li class="checklist__item" {{ block.shopify_attributes }}>
+          <span class="checklist__badge">{% render 'icon', name: 'check-badge' %}</span>
+          <p class="checklist__text">{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with checklist",
+  "tag": "div",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Product shelf / flat-lay photo." },
+    { "type": "select", "id": "image_position", "label": "Image position", "default": "left", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ] },
+    { "type": "color", "id": "gradient_from", "label": "Gradient top", "default": "#F6E1E4" },
+    { "type": "color", "id": "gradient_to", "label": "Gradient bottom", "default": "#E6DFF5" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Checklist item",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Clean ingredients. Honest formulas." }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Image with checklist",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Clean ingredients. Vegan, gluten free, no artificial colors." } },
+        { "type": "item", "settings": { "text": "Myo-Inositol, D-Chiro Inositol, magnesium, vitamin B complex & botanicals." } },
+        { "type": "item", "settings": { "text": "Delicious, convenient, effective. Just mix & go." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

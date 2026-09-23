@@ -1,0 +1,244 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign selected_plan = product.selected_selling_plan_allocation.selling_plan -%}
+{%- if selected_plan == blank and product.requires_selling_plan -%}
+  {%- assign selected_plan = product.selling_plan_groups.first.selling_plans.first -%}
+{%- endif -%}
+{%- if selected_plan == blank and section.settings.default_to_subscription and product.selling_plan_groups.size > 0 -%}
+  {%- assign selected_plan = product.selling_plan_groups.first.selling_plans.first -%}
+{%- endif -%}
+
+<section class="product container" data-product-section>
+  <div class="product__gallery">
+    <div class="product__main-media" style="background: {{ section.settings.media_bg }};">
+      {%- if product.featured_media -%}
+        <img
+          class="product__main-image"
+          data-main-image
+          src="{{ product.featured_media | image_url: width: 1200 }}"
+          alt="{{ product.featured_media.alt | default: product.title | escape }}"
+          width="1200"
+          height="{{ 1200 | divided_by: product.featured_media.aspect_ratio | round }}"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product__main-image product__main-image--placeholder' }}
+      {%- endif -%}
+
+      {%- assign badge_blocks = section.blocks | where: 'type', 'badge' -%}
+      {%- if badge_blocks.size > 0 -%}
+        <div class="product__badges">
+          {%- for block in badge_blocks -%}
+            <span class="stamp" style="--stamp-bg: {{ block.settings.color }};" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if product.media.size > 1 -%}
+      <div class="product__thumbs">
+        {%- for media in product.media -%}
+          <button type="button" class="product__thumb{% if forloop.first %} is-active{% endif %}" data-media-thumb data-image="{{ media | image_url: width: 1200 }}" aria-label="{{ media.alt | default: product.title | escape }}">
+            <img src="{{ media | image_url: width: 160 }}" alt="" width="72" height="72" loading="lazy">
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="product__info">
+    <h1 class="product__title">{{ product.title }}</h1>
+
+    {%- assign rating = product.metafields.reviews.rating.value -%}
+    {%- if rating != blank -%}
+      {%- assign rating_pct = rating.rating | divided_by: rating.scale_max | times: 100 -%}
+      <div class="rating" aria-label="{{ rating.rating | round: 1 }} / {{ rating.scale_max }}">
+        <span class="rating__stars" style="--rating: {{ rating_pct }}%;">
+          <span class="rating__empty">{% for i in (1..5) %}{% render 'icon', name: 'star' %}{% endfor %}</span>
+          <span class="rating__filled">{% for i in (1..5) %}{% render 'icon', name: 'star' %}{% endfor %}</span>
+        </span>
+        <span class="rating__text">{{ rating.rating | round: 1 }} ({{ product.metafields.reviews.rating_count.value | default: 0 }} {{ 'products.product.reviews' | t }})</span>
+      </div>
+    {%- endif -%}
+
+    <div class="product__description rte">{{ product.description }}</div>
+
+    {% form 'product', product, id: 'ProductForm', class: 'product__form', data-product-form: '', novalidate: 'novalidate' %}
+      <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+      <input type="hidden" name="selling_plan" value="{{ selected_plan.id }}" data-selling-plan-input>
+
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <fieldset class="product__option" data-option-index="{{ forloop.index0 }}">
+            <legend class="product__label">{{ option.name }}</legend>
+            <div class="pills">
+              {%- for value in option.values -%}
+                <button type="button" class="pill{% if option.selected_value == value %} is-selected{% endif %}" data-option-value="{{ value | escape }}" aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">{{ value }}</button>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endfor -%}
+      {%- endunless -%}
+
+      {%- comment -%}
+        Subscribe & save: appears automatically once you add a subscription plan to this product
+        (e.g. with the free Shopify Subscriptions app). Otherwise only the one-time price shows.
+      {%- endcomment -%}
+      <div class="purchase-options" data-purchase-options>
+        {%- for group in product.selling_plan_groups -%}
+          {%- for plan in group.selling_plans -%}
+            {%- assign plan_allocation = current_variant.selling_plan_allocations | where: 'selling_plan_id', plan.id | first -%}
+            <label class="purchase-option purchase-option--subscription{% if selected_plan.id == plan.id %} is-selected{% endif %}">
+              <span class="purchase-option__head">
+                <input type="radio" name="purchase_option" value="{{ plan.id }}" data-plan-radio{% if selected_plan.id == plan.id %} checked{% endif %}>
+                <span class="purchase-option__name">{{ plan.name }}</span>
+                <span class="purchase-option__price" data-plan-price="{{ plan.id }}">
+                  {%- if plan_allocation.compare_at_price > plan_allocation.price -%}<s>{{ plan_allocation.compare_at_price | money }}</s> {% endif -%}
+                  {{ plan_allocation.price | money }}
+                </span>
+              </span>
+              {%- if forloop.first and section.settings.subscription_perks != blank -%}
+                <ul class="purchase-option__perks">
+                  {%- assign perks = section.settings.subscription_perks | newline_to_br | split: '<br />' -%}
+                  {%- for perk in perks -%}
+                    {%- assign perk_text = perk | strip -%}
+                    {%- if perk_text != blank -%}<li>{% render 'icon', name: 'check' %}{{ perk_text }}</li>{%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </label>
+          {%- endfor -%}
+        {%- endfor -%}
+
+        {%- unless product.requires_selling_plan -%}
+          <label class="purchase-option{% if selected_plan == blank %} is-selected{% endif %}"{% if product.selling_plan_groups.size == 0 %} hidden{% endif %}>
+            <span class="purchase-option__head">
+              <input type="radio" name="purchase_option" value="" data-plan-radio{% if selected_plan == blank %} checked{% endif %}>
+              <span class="purchase-option__name">{{ 'products.product.one_time' | t }}</span>
+              <span class="purchase-option__price" data-one-time-price>{{ current_variant.price | money }}</span>
+            </span>
+          </label>
+        {%- endunless -%}
+      </div>
+
+      <div class="product__quantity">
+        <label class="product__label" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+        <div class="qty" data-qty>
+          <button type="button" class="qty__btn" data-qty-minus aria-label="-">&minus;</button>
+          <input type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1">
+          <button type="button" class="qty__btn" data-qty-plus aria-label="+">+</button>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn--primary btn--lg btn--block product__add-to-cart"
+        data-add-to-cart
+        {% unless current_variant.available %}disabled{% endunless %}
+      >
+        <span data-add-to-cart-text>
+          {%- if current_variant.available -%}
+            {%- if selected_plan -%}
+              {%- assign plan_allocation = current_variant.selling_plan_allocations | where: 'selling_plan_id', selected_plan.id | first -%}
+              {{ 'products.product.add_to_cart' | t }} &ndash; {{ plan_allocation.price | money }}
+            {%- else -%}
+              {{ 'products.product.add_to_cart' | t }} &ndash; {{ current_variant.price | money }}
+            {%- endif -%}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </span>
+      </button>
+    {% endform %}
+
+    {%- assign feature_blocks = section.blocks | where: 'type', 'feature' -%}
+    {%- if feature_blocks.size > 0 -%}
+      <ul class="product__features">
+        {%- for block in feature_blocks -%}
+          <li {{ block.shopify_attributes }}>{% render 'icon', name: block.settings.icon %}<span>{{ block.settings.text }}</span></li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'collapsible' -%}
+        <details class="accordion" {{ block.shopify_attributes }}{% if block.settings.open %} open{% endif %}>
+          <summary class="accordion__title">{{ block.settings.heading }} {% render 'icon', name: 'chevron-down' %}</summary>
+          <div class="accordion__content rte">
+            {{ block.settings.content }}
+            {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+          </div>
+        </details>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+    <script type="application/json" data-product-strings>
+      {
+        "addToCart": {{ 'products.product.add_to_cart' | t | json }},
+        "soldOut": {{ 'products.product.sold_out' | t | json }},
+        "unavailable": {{ 'products.product.unavailable' | t | json }},
+        "added": {{ 'products.product.added' | t | json }},
+        "error": {{ 'products.product.error' | t | json }},
+        "moneyFormat": {{ shop.money_format | json }}
+      }
+    </script>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    { "type": "color", "id": "media_bg", "label": "Image background", "default": "#F4EFEE" },
+    { "type": "checkbox", "id": "default_to_subscription", "label": "Pre-select subscription", "default": true },
+    {
+      "type": "textarea",
+      "id": "subscription_perks",
+      "label": "Subscription perks (one per line)",
+      "default": "Delivered every month\nSave on every order\nPause, skip or cancel anytime\nFree shipping"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Image badge",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Text", "default": "BEST\nSELLER" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#E6DFF5" }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature icon",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "leaf",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "no-color", "label": "No artificial colors" },
+            { "value": "wheat", "label": "Wheat" },
+            { "value": "flask", "label": "Lab flask" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "glass", "label": "Glass" }
+          ]
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "Vegan" }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Collapsible tab",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Ingredients" },
+        { "type": "richtext", "id": "content", "label": "Content" },
+        { "type": "page", "id": "page", "label": "Or show content from a page" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    }
+  ]
+}
+{% endschema %}

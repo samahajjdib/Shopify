@@ -1,0 +1,26 @@
+<section class="section rich-text" style="background: {{ section.settings.background }};">
+  <div class="container container--narrow">
+    {%- if section.settings.script_text != blank -%}<p class="script">{{ section.settings.script_text }}</p>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="section-heading__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="rte">{{ section.settings.text }}</div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "script_text", "label": "Handwritten text" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made for women, by women" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell your story here.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FFFBF8" }
+  ],
+  "presets": [ { "name": "Rich text" } ]
+}
+{% endschema %}

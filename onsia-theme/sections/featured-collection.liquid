@@ -1,0 +1,54 @@
+{%- assign collection = collections[section.settings.collection] -%}
+<section class="section featured" style="background: {{ section.settings.background }};">
+  <div class="container">
+    <div class="section-heading">
+      {%- if section.settings.script_text != blank -%}<p class="script">{{ section.settings.script_text }}</p>{%- endif -%}
+      <h2 class="section-heading__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="section-heading__text">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="product-grid">
+      {%- if collection != blank and collection.products.size > 0 -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- assign flavours = 'Berry Peach,Mixed Berry,Vanilla Bean,Tropical Mango' | split: ',' -%}
+        {%- for flavour in flavours -%}
+          <div class="product-card">
+            <div class="product-card__media-link product-card__media-link--{{ forloop.index }}">
+              {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'product-card__media product-card__media--placeholder' }}
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">{{ flavour }}</h3>
+              <p class="product-card__meta">{{ 'sections.featured.placeholder' | t }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if collection != blank and section.settings.show_view_all -%}
+      <div class="featured__footer">
+        <a href="{{ collection.url }}" class="btn btn--outline">{{ 'sections.featured.view_all' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "script_text", "label": "Handwritten text", "default": "Different flavours." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Same happy you" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 12, "step": 1, "default": 4 },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show \"View all\" button", "default": true },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FFFBF8" }
+  ],
+  "presets": [ { "name": "Featured collection" } ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{
+  "current": {
+    "logo_width": 130,
+    "logo_subtitle": "أنسية",
+    "color_background": "#FFFBF8",
+    "color_text": "#4A2230",
+    "color_primary": "#6E2F3F",
+    "color_primary_text": "#FFFFFF",
+    "color_blush": "#F6E1E4",
+    "color_lavender": "#E6DFF5",
+    "color_butter": "#F8EDC9",
+    "color_mint": "#DDEEDC",
+    "font_heading": "playfair_display_n4",
+    "font_body": "work_sans_n4",
+    "page_width": 1400,
+    "corner_radius": 14,
+    "social_instagram": "",
+    "social_tiktok": "",
+    "social_facebook": ""
+  }
+}

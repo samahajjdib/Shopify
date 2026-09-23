@@ -1,0 +1,284 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "background": "#F6E1E4",
+            "overlay": 0,
+            "text_color": "dark",
+            "eyebrow": "Good mood. Daily.",
+            "heading": "Small habits. Big changes.",
+            "text": "<p>Our Myo-Inositol & D-Chiro Inositol powder in a 4:1 ratio helps support hormonal balance, energy, clear skin and mood. Just mix & go.</p>",
+            "button_label": "Shop now",
+            "badge_text": "NEW\nFLAVOURS",
+            "badge_color": "#F8EDC9"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "background": "#E6DFF5",
+            "overlay": 0,
+            "text_color": "dark",
+            "eyebrow": "More energy. Brighter days.",
+            "heading": "Different flavours. Same happy you.",
+            "text": "<p>Berry Peach, Mixed Berry, Vanilla Bean and Tropical Mango. Subscribe and save on every box.</p>",
+            "button_label": "Find your flavour",
+            "badge_text": "SUBSCRIBE\n& SAVE",
+            "badge_color": "#DDEEDC"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
+      "settings": {
+        "height": 720,
+        "autoplay_seconds": 6
+      }
+    },
+    "marquee": {
+      "type": "trust-marquee",
+      "blocks": {
+        "m1": {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "text": "100% Vegan"
+          }
+        },
+        "m2": {
+          "type": "badge",
+          "settings": {
+            "icon": "no-color",
+            "text": "No Artificial Colors"
+          }
+        },
+        "m3": {
+          "type": "badge",
+          "settings": {
+            "icon": "wheat",
+            "text": "Gluten Free"
+          }
+        },
+        "m4": {
+          "type": "badge",
+          "settings": {
+            "icon": "flask",
+            "text": "4:1 Inositol Ratio"
+          }
+        },
+        "m5": {
+          "type": "badge",
+          "settings": {
+            "icon": "glass",
+            "text": "Mix & Go Sachets"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "settings": {
+        "background": "#E6DFF5",
+        "speed": 40
+      }
+    },
+    "cards": {
+      "type": "category-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "title": "Daily Pouches",
+            "text": "30 sachets of your favourite flavour for a whole month.",
+            "tint": "#F6E1E4"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "title": "Flavour Bundles",
+            "text": "Mix berry, vanilla & mango. Different flavours, same happy you.",
+            "tint": "#E6DFF5"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "title": "Mix & Go Sachets",
+            "text": "Single-serve sticks for your bag, desk or gym.",
+            "tint": "#F8EDC9"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "title": "Gift Sets",
+            "text": "Share the good mood with someone you love.",
+            "tint": "#DDEEDC"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "heading": "Real self-care starts inside",
+        "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Onsia+ ritual.</p>",
+        "background": "#FFFBF8"
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "lotus",
+            "title": "Hormonal Balance",
+            "text": "Supports a healthy, regular cycle."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "bolt",
+            "title": "Energy & Focus",
+            "text": "Helps steady your energy through the day."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "face",
+            "title": "Clear Skin & Mood",
+            "text": "Feel good in your skin, inside and out."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "gut",
+            "title": "Gut Health",
+            "text": "Gentle on your tummy, with no artificial colors."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "eyebrow": "More energy. Brighter days.",
+        "heading": "One sachet, four good things",
+        "background": "#FFFBF8"
+      }
+    },
+    "checklist": {
+      "type": "image-checklist",
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "text": "Clean ingredients. Vegan, gluten free, no artificial colors."
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "text": "Myo-Inositol, D-Chiro Inositol, magnesium, vitamin B complex & botanicals."
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "text": "Delicious, convenient, effective. Just mix & go."
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ],
+      "settings": {
+        "image_position": "left",
+        "gradient_from": "#F6E1E4",
+        "gradient_to": "#E6DFF5"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "script_text": "Different flavours.",
+        "heading": "Same happy you",
+        "text": "<p>Berry Peach, Mixed Berry, Vanilla Bean & Tropical Mango.</p>",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "background": "#FFFBF8"
+      }
+    },
+    "ritual": {
+      "type": "image-with-text",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Tear",
+            "text": "Open one 7g sachet."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Pour",
+            "text": "Add it to a glass of cold water."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Sip",
+            "text": "Stir, enjoy, and repeat daily."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "image_position": "right",
+        "script_text": "Mix & Go",
+        "heading": "Your 30-second good mood ritual",
+        "text": "<p>Delicious. Convenient. Effective.</p>",
+        "button_label": "Find your flavour",
+        "background": "#F8EDC9"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "cards",
+    "benefits",
+    "checklist",
+    "featured",
+    "ritual"
+  ]
+}

@@ -1,0 +1,12 @@
+{%- comment -%} Accepts: paginate {%- endcomment -%}
+<nav class="pagination" aria-label="Pagination">
+  {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">&larr;</a>{%- endif -%}
+  {%- for part in paginate.parts -%}
+    {%- if part.is_link -%}
+      <a href="{{ part.url }}">{{ part.title }}</a>
+    {%- else -%}
+      <span class="pagination__current">{{ part.title }}</span>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if paginate.next -%}<a href="{{ paginate.next.url }}">&rarr;</a>{%- endif -%}
+</nav>

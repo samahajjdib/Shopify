@@ -1,0 +1,15 @@
+<section class="section not-found">
+  <div class="container container--narrow">
+    <p class="script">{{ 'general.404.script' | t }}</p>
+    <h1 class="section-heading__title">{{ 'general.404.title' | t }}</h1>
+    <p>{{ 'general.404.text' | t }}</p>
+    <a href="{{ routes.root_url }}" class="btn btn--primary">{{ 'general.404.button' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404 page",
+  "settings": []
+}
+{% endschema %}

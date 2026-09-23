@@ -1,0 +1,80 @@
+{%- assign menu = linklists[section.settings.menu] -%}
+<header class="header" data-header>
+  <div class="header__inner container">
+    <button type="button" class="header__icon header__menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="HeaderNav" aria-label="{{ 'general.header.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+
+    <nav class="header__nav" id="HeaderNav" aria-label="{{ 'general.header.menu' | t }}">
+      <ul class="nav">
+        {%- for link in menu.links -%}
+          <li class="nav__item{% if link.links.size > 0 %} nav__item--has-dropdown{% endif %}">
+            {%- if link.links.size > 0 -%}
+              <details class="nav__dropdown">
+                <summary class="nav__link">{{ link.title }} {% render 'icon', name: 'chevron-down' %}</summary>
+                <ul class="nav__submenu">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}" class="nav__sublink">{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a href="{{ link.url }}" class="nav__link"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__logo">
+      {% render 'logo' %}
+    </div>
+
+    <div class="header__icons">
+      {%- if localization.available_languages.size > 1 or localization.available_countries.size > 1 -%}
+        <details class="header__locale">
+          <summary class="header__icon" aria-label="{{ 'general.header.language' | t }}">{% render 'icon', name: 'globe' %}</summary>
+          {%- form 'localization', class: 'locale-form' -%}
+            {%- if localization.available_languages.size > 1 -%}
+              <p class="locale-form__label">{{ 'general.header.language' | t }}</p>
+              {%- for language in localization.available_languages -%}
+                <button type="submit" name="language_code" value="{{ language.iso_code }}" class="locale-form__option{% if language.iso_code == localization.language.iso_code %} is-selected{% endif %}">{{ language.endonym_name | capitalize }}</button>
+              {%- endfor -%}
+            {%- endif -%}
+            {%- if localization.available_countries.size > 1 -%}
+              <p class="locale-form__label">{{ 'general.header.country' | t }}</p>
+              <select name="country_code" onchange="this.form.submit()" class="locale-form__select">
+                {%- for country in localization.available_countries -%}
+                  <option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>{{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})</option>
+                {%- endfor -%}
+              </select>
+            {%- endif -%}
+          {%- endform -%}
+        </details>
+      {%- endif -%}
+      <a href="{{ routes.search_url }}" class="header__icon" aria-label="{{ 'general.search.submit' | t }}">{% render 'icon', name: 'search' %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="header__icon header__icon--account" aria-label="{{ 'general.header.account' | t }}">{% render 'icon', name: 'account' %}</a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="header__icon header__cart" aria-label="{{ 'general.cart.title' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="header__cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "Tip: add sub-links under \"Shop\" in Online Store → Navigation to get a dropdown."
+    }
+  ]
+}
+{% endschema %}

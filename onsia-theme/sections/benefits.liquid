@@ -1,0 +1,66 @@
+<section class="section benefits" style="background: {{ section.settings.background }};">
+  <div class="container">
+    <div class="section-heading">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="section-heading__title">{{ section.settings.heading }}</h2>
+    </div>
+    <ul class="benefits__list">
+      {%- for block in section.blocks -%}
+        <li class="benefit" {{ block.shopify_attributes }}>
+          <span class="benefit__icon">{% render 'icon', name: block.settings.icon %}</span>
+          <h3 class="benefit__title">{{ block.settings.title }}</h3>
+          {%- if block.settings.text != blank -%}<p class="benefit__text">{{ block.settings.text }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits icons",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small text above heading", "default": "More energy. Brighter days." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One scoop, four good things" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#FFFBF8" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "lotus",
+          "options": [
+            { "value": "lotus", "label": "Lotus" },
+            { "value": "bolt", "label": "Energy bolt" },
+            { "value": "face", "label": "Face" },
+            { "value": "gut", "label": "Gut" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Hormonal Balance" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Benefits icons",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "lotus", "title": "Hormonal Balance", "text": "Supports a healthy, regular cycle." } },
+        { "type": "benefit", "settings": { "icon": "bolt", "title": "Energy & Focus", "text": "Helps steady your energy through the day." } },
+        { "type": "benefit", "settings": { "icon": "face", "title": "Clear Skin & Mood", "text": "Feel good in your skin, inside and out." } },
+        { "type": "benefit", "settings": { "icon": "gut", "title": "Gut Health", "text": "Gentle on your tummy, with no artificial colors." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+{%- comment -%}
+  Accepts: product
+{%- endcomment -%}
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__media-link">
+    {%- if product.featured_media -%}
+      <img
+        class="product-card__media"
+        src="{{ product.featured_media | image_url: width: 700 }}"
+        alt="{{ product.featured_media.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="700"
+        height="{{ 700 | divided_by: product.featured_media.aspect_ratio | round }}"
+      >
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__media product-card__media--placeholder' }}
+    {%- endif -%}
+    {%- if product.compare_at_price > product.price -%}
+      <span class="badge">{{ 'products.product.sale' | t }}</span>
+    {%- elsif product.available == false -%}
+      <span class="badge badge--muted">{{ 'products.product.sold_out' | t }}</span>
+    {%- endif -%}
+  </a>
+  <div class="product-card__info">
+    <h3 class="product-card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {%- assign rating = product.metafields.reviews.rating.value -%}
+    {%- if rating != blank -%}
+      <p class="product-card__rating">{% render 'icon', name: 'star' %} {{ rating.rating | round: 1 }} <span>({{ product.metafields.reviews.rating_count.value | default: 0 }})</span></p>
+    {%- endif -%}
+    <div class="product-card__price">
+      {%- if product.price_varies -%}{{ 'products.product.from' | t }} {% endif -%}
+      {%- if product.compare_at_price > product.price -%}
+        <s class="price--compare">{{ product.compare_at_price | money }}</s>
+      {%- endif -%}
+      <span>{{ product.price | money }}</span>
+    </div>
+    <a href="{{ product.url }}" class="btn btn--outline btn--sm product-card__cta">{{ 'products.product.shop_now' | t }}</a>
+  </div>
+</div>

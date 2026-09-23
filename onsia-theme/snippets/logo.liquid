@@ -1,0 +1,18 @@
+{%- comment -%} Store logo: uploaded image, or a serif text logo with the "+" and Arabic subtitle {%- endcomment -%}
+<a href="{{ routes.root_url }}" class="logo" aria-label="{{ shop.name | escape }}">
+  {%- if settings.logo -%}
+    <img
+      src="{{ settings.logo | image_url: width: 520 }}"
+      alt="{{ shop.name | escape }}"
+      width="{{ settings.logo_width }}"
+      height="{{ settings.logo_width | divided_by: settings.logo.aspect_ratio | round }}"
+      style="width: {{ settings.logo_width }}px; height: auto;"
+    >
+  {%- else -%}
+    {%- assign name_parts = shop.name | split: '+' -%}
+    <span class="logo__text">{{ name_parts[0] }}{% if shop.name contains '+' %}<sup class="logo__plus">+</sup>{% endif %}</span>
+    {%- if settings.logo_subtitle != blank -%}
+      <span class="logo__sub" lang="ar">{{ settings.logo_subtitle }}</span>
+    {%- endif -%}
+  {%- endif -%}
+</a>
