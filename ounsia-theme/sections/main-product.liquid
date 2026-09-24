@@ -85,8 +85,10 @@
                   for line in pill_color_lines
                     assign parts = line | split: ':'
                     assign line_key = parts.first | downcase | strip
-                    if line_key == value_key and parts.size > 1
-                      assign pill_color = parts.last | strip
+                    if parts.size > 1 and line_key != blank
+                      if line_key == value_key or value_key contains line_key or line_key contains value_key
+                        assign pill_color = parts.last | strip
+                      endif
                     endif
                   endfor
                 -%}
@@ -233,8 +235,8 @@
       "type": "textarea",
       "id": "option_colors",
       "label": "Flavour colors",
-      "info": "One per line as Flavour: color, e.g. Lime: #DDF2C8. The flavour's button turns this color when selected.",
-      "default": "Strawberry: #FAD1D1\nPassion Fruit: #FFF0B3\nLime: #DCF2C6"
+      "info": "One per line as Flavour: color, e.g. Lime: #DDF2C8. Names can be partial (Passion matches Passion Fruit). The flavour's button turns this color when selected.",
+      "default": "Strawberry: #FAD1D1\nPassion: #FFF0B3\nLime: #DCF2C6"
     },
     { "type": "checkbox", "id": "default_to_subscription", "label": "Pre-select subscription", "default": true },
     { "type": "checkbox", "id": "show_subscription_preview", "label": "Show subscription option before a plan is set up", "info": "Shows a \"coming soon\" monthly option until you add a plan with the Shopify Subscriptions app.", "default": true },
