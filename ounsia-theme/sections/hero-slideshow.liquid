@@ -10,13 +10,25 @@
     .starburst { width: 116px; height: 116px; }
   }
   /* Image-only slides: the photo already carries the logo and text, so show it whole */
-  .hero__slide--image-only { min-height: 0; aspect-ratio: var(--slide-ratio); align-items: flex-end; }
+  .hero__slides { grid-template-columns: minmax(0, 1fr); }
+  .hero__slide { min-width: 0; }
+  .hero__slide--image-only { min-height: 0; aspect-ratio: var(--slide-ratio); align-items: flex-end; align-self: start; }
   .hero__slide--image-only .hero__content { justify-content: flex-start; padding-bottom: 48px; }
   .hero__slide--image-only .hero__content::before { display: none; }
+  .hero__image--mobile { display: none; }
   @media (max-width: 860px) {
-    .hero__slide--image-only { min-height: 0; }
-    .hero__slide--image-only .hero__content { padding-bottom: 36px; }
+    /* Phones: photo on top at full width, button underneath instead of covering the photo */
+    .hero__slide--image-only { display: block; aspect-ratio: auto; background: var(--color-background); }
+    .hero__slide--image-only .hero__image {
+      position: static; display: block; width: 100%; height: auto;
+      aspect-ratio: var(--slide-ratio-mobile, var(--slide-ratio)); object-fit: cover;
+    }
+    .hero__slide--image-only .hero__image--mobile { display: block; }
+    .hero__slide--image-only.has-mobile-image .hero__image--desktop { display: none; }
+    .hero__slide--image-only .hero__overlay { display: none; }
+    .hero__slide--image-only .hero__content { padding: 14px 16px 16px; align-items: flex-start; }
     .hero__slide--image-only .btn--lg { padding: 12px 28px; font-size: 13px; }
+    .hero:has(.hero__slide--image-only) .hero__dots { bottom: 36px; left: auto; right: 16px; transform: none; }
   }
 </style>
 <section class="hero" data-slideshow data-autoplay="{{ section.settings.autoplay_seconds }}" style="--hero-height: {{ section.settings.height }}px;">
@@ -28,10 +40,13 @@
           assign image_only = true
         endif
       -%}
-      <div class="hero__slide{% if forloop.first %} is-active{% endif %}{% if image_only %} hero__slide--image-only{% endif %}" data-slide {{ block.shopify_attributes }} style="--slide-bg: {{ block.settings.background }};{% if image_only %} --slide-ratio: {{ block.settings.image.aspect_ratio }};{% endif %}">
+      <div class="hero__slide{% if forloop.first %} is-active{% endif %}{% if image_only %} hero__slide--image-only{% endif %}{% if block.settings.mobile_image != blank %} has-mobile-image{% endif %}" data-slide {{ block.shopify_attributes }} style="--slide-bg: {{ block.settings.background }};{% if image_only %} --slide-ratio: {{ block.settings.image.aspect_ratio }};{% endif %}{% if block.settings.mobile_image != blank %} --slide-ratio-mobile: {{ block.settings.mobile_image.aspect_ratio }};{% endif %}">
         {%- if block.settings.image -%}
           {%- if forloop.first -%}{%- assign img_loading = 'eager' -%}{%- else -%}{%- assign img_loading = 'lazy' -%}{%- endif -%}
-          {{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero__image', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2400', loading: img_loading }}
+          {{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero__image hero__image--desktop', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2400', loading: img_loading }}
+          {%- if block.settings.mobile_image != blank -%}
+            {{ block.settings.mobile_image | image_url: width: 1200 | image_tag: class: 'hero__image hero__image--mobile', sizes: '100vw', widths: '600, 900, 1200', loading: img_loading }}
+          {%- endif -%}
         {%- else -%}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__image hero__image--placeholder' }}
         {%- endif -%}
@@ -79,6 +94,7 @@
       "name": "Slide",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Wide photo, 2400px wide recommended. Leave Heading and Text empty to show the photo whole (for photos that already include your logo and text)." },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image (optional)", "info": "A taller photo for phones, e.g. 1080 x 1350px. If empty, the main image is shown full width on phones." },
         { "type": "color", "id": "background", "label": "Background (behind image)", "default": "#F7E3DE" },
         { "type": "range", "id": "overlay", "label": "Dark overlay", "min": 0, "max": 60, "step": 5, "unit": "%", "default": 0 },
         { "type": "select", "id": "text_color", "label": "Text color", "default": "dark", "options": [ { "value": "dark", "label": "Plum" }, { "value": "light", "label": "White" } ] },
