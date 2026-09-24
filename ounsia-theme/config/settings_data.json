@@ -2,13 +2,13 @@
   "current": {
     "logo_width": 130,
     "logo_subtitle": "أنسية",
-    "color_background": "#FFFDFC",
-    "color_text": "#5A4A54",
-    "color_primary": "#7A6170",
-    "color_blush": "#FDE4EA",
-    "color_lavender": "#EEE6FA",
-    "color_butter": "#FFE6D8",
-    "color_mint": "#E5F3DA",
+    "color_background": "#FCF7F4",
+    "color_text": "#5E3A42",
+    "color_primary": "#7B2E3E",
+    "color_blush": "#F7E3DE",
+    "color_lavender": "#F1E6EC",
+    "color_butter": "#FAE6DA",
+    "color_mint": "#E7ECDA",
     "font_heading": "playfair_display_n4",
     "font_body": "work_sans_n4",
     "page_width": 1400,
@@ -16,8 +16,8 @@
     "social_instagram": "",
     "social_tiktok": "",
     "social_facebook": "",
-    "color_babyblue": "#DDEEFB",
-    "color_button": "#F8CAD5",
-    "color_button_text": "#4E3B46"
+    "color_babyblue": "#E6EDF0",
+    "color_button": "#F2CFCB",
+    "color_button_text": "#6A2434"
   }
 }

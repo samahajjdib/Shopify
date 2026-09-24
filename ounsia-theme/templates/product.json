@@ -3,9 +3,9 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "badge_bestseller": { "type": "badge", "settings": { "text": "BEST\nSELLER", "color": "#EEE6FA" } },
-        "badge_vegan": { "type": "badge", "settings": { "text": "100%\nVEGAN", "color": "#E5F3DA" } },
-        "badge_ratio": { "type": "badge", "settings": { "text": "4:1\nRATIO", "color": "#FDE4EA" } },
+        "badge_bestseller": { "type": "badge", "settings": { "text": "BEST\nSELLER", "color": "#F1E6EC" } },
+        "badge_vegan": { "type": "badge", "settings": { "text": "100%\nVEGAN", "color": "#E7ECDA" } },
+        "badge_ratio": { "type": "badge", "settings": { "text": "4:1\nRATIO", "color": "#F7E3DE" } },
         "feature_vegan": { "type": "feature", "settings": { "icon": "leaf", "text": "Vegan" } },
         "feature_colors": { "type": "feature", "settings": { "icon": "no-color", "text": "No Artificial Colors" } },
         "feature_gluten": { "type": "feature", "settings": { "icon": "wheat", "text": "Gluten Free" } },
@@ -47,7 +47,7 @@
       "settings": {
         "eyebrow": "More energy. Brighter days.",
         "heading": "One sachet, four good things",
-        "background": "#FDE4EA"
+        "background": "#F7E3DE"
       }
     }
   },

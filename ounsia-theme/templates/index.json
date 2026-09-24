@@ -6,30 +6,30 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "background": "#FDE4EA",
+            "background": "#F6E3DD",
             "overlay": 0,
             "text_color": "dark",
-            "eyebrow": "Good mood. Daily.",
-            "heading": "Small habits. Big changes.",
-            "text": "<p>Our Myo-Inositol & D-Chiro Inositol powder in a 4:1 ratio helps support hormonal balance, energy, clear skin and mood. Just mix & go.</p>",
+            "eyebrow": "",
+            "heading": "",
+            "text": "",
             "button_label": "Shop now",
-            "badge_text": "NEW\nFLAVOURS",
-            "badge_color": "#FFE6D8",
+            "badge_text": "",
+            "badge_color": "#FAE6DA",
             "button_link": "shopify://products/ounsia-inositol-powder"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "background": "#DDEEFB",
+            "background": "#F6E3DD",
             "overlay": 0,
             "text_color": "dark",
-            "eyebrow": "More energy. Brighter days.",
-            "heading": "Different flavours. Same happy you.",
-            "text": "<p>Strawberry, Passion Fruit and Lime. Subscribe and save on every box.</p>",
-            "button_label": "Find your flavour",
-            "badge_text": "SUBSCRIBE\n& SAVE",
-            "badge_color": "#E5F3DA",
+            "eyebrow": "",
+            "heading": "",
+            "text": "",
+            "button_label": "Shop now",
+            "badge_text": "",
+            "badge_color": "#E7ECDA",
             "button_link": "shopify://products/ounsia-inositol-powder"
           }
         }
@@ -40,7 +40,7 @@
       ],
       "settings": {
         "height": 720,
-        "autoplay_seconds": 6
+        "autoplay_seconds": 5
       }
     },
     "marquee": {
@@ -90,7 +90,7 @@
         "m5"
       ],
       "settings": {
-        "background": "#DDEEFB",
+        "background": "#E6EDF0",
         "speed": 40
       }
     },
@@ -102,7 +102,7 @@
           "settings": {
             "title": "Daily Pouches",
             "text": "30 sachets of your favourite flavour for a whole month.",
-            "tint": "#FDE4EA",
+            "tint": "#F7E3DE",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -111,7 +111,7 @@
           "settings": {
             "title": "Flavour Bundles",
             "text": "Strawberry, passion fruit & lime. Different flavours, same happy you.",
-            "tint": "#EEE6FA",
+            "tint": "#F1E6EC",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -120,7 +120,7 @@
           "settings": {
             "title": "Mix & Go Sachets",
             "text": "Single-serve sticks for your bag, desk or gym.",
-            "tint": "#FFE6D8",
+            "tint": "#FAE6DA",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -129,7 +129,7 @@
           "settings": {
             "title": "Gift Sets",
             "text": "Share the good mood with someone you love.",
-            "tint": "#E5F3DA",
+            "tint": "#E7ECDA",
             "link": "shopify://collections/shop-all"
           }
         }
@@ -143,7 +143,7 @@
       "settings": {
         "heading": "Real self-care starts inside",
         "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Ounsia+ ritual.</p>",
-        "background": "#FFFDFC"
+        "background": "#FCF7F4"
       }
     },
     "benefits": {
@@ -191,7 +191,7 @@
       "settings": {
         "eyebrow": "More energy. Brighter days.",
         "heading": "One sachet, four good things",
-        "background": "#FFFDFC"
+        "background": "#FCF7F4"
       }
     },
     "checklist": {
@@ -223,8 +223,8 @@
       ],
       "settings": {
         "image_position": "left",
-        "gradient_from": "#FDE4EA",
-        "gradient_to": "#DDEEFB"
+        "gradient_from": "#F7E3DE",
+        "gradient_to": "#E6EDF0"
       }
     },
     "featured": {
@@ -235,7 +235,7 @@
         "text": "<p>Strawberry, Passion Fruit & Lime.</p>",
         "products_to_show": 4,
         "show_view_all": true,
-        "background": "#FFFDFC",
+        "background": "#FCF7F4",
         "collection": "shop-all"
       }
     },
@@ -275,7 +275,7 @@
         "heading": "Your 30-second good mood ritual",
         "text": "<p>Delicious. Convenient. Effective.</p>",
         "button_label": "Find your flavour",
-        "background": "#FFE6D8",
+        "background": "#FAE6DA",
         "button_link": "shopify://products/ounsia-inositol-powder"
       }
     }

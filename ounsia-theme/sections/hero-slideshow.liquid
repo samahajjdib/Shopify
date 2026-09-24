@@ -9,11 +9,26 @@
   @media (max-width: 860px) {
     .starburst { width: 116px; height: 116px; }
   }
+  /* Image-only slides: the photo already carries the logo and text, so show it whole */
+  .hero__slide--image-only { min-height: 0; aspect-ratio: var(--slide-ratio); align-items: flex-end; }
+  .hero__slide--image-only .hero__content { justify-content: center; padding-bottom: 56px; }
+  .hero__slide--image-only .hero__content::before { display: none; }
+  @media (max-width: 860px) {
+    .hero__slide--image-only { min-height: 0; }
+    .hero__slide--image-only .hero__content { padding-bottom: 36px; }
+    .hero__slide--image-only .btn--lg { padding: 12px 28px; font-size: 13px; }
+  }
 </style>
 <section class="hero" data-slideshow data-autoplay="{{ section.settings.autoplay_seconds }}" style="--hero-height: {{ section.settings.height }}px;">
   <div class="hero__slides">
     {%- for block in section.blocks -%}
-      <div class="hero__slide{% if forloop.first %} is-active{% endif %}" data-slide {{ block.shopify_attributes }} style="--slide-bg: {{ block.settings.background }};">
+      {%- liquid
+        assign image_only = false
+        if block.settings.image != blank and block.settings.heading == blank and block.settings.text == blank
+          assign image_only = true
+        endif
+      -%}
+      <div class="hero__slide{% if forloop.first %} is-active{% endif %}{% if image_only %} hero__slide--image-only{% endif %}" data-slide {{ block.shopify_attributes }} style="--slide-bg: {{ block.settings.background }};{% if image_only %} --slide-ratio: {{ block.settings.image.aspect_ratio }};{% endif %}">
         {%- if block.settings.image -%}
           {%- if forloop.first -%}{%- assign img_loading = 'eager' -%}{%- else -%}{%- assign img_loading = 'lazy' -%}{%- endif -%}
           {{ block.settings.image | image_url: width: 2400 | image_tag: class: 'hero__image', sizes: '100vw', widths: '750, 1100, 1500, 2000, 2400', loading: img_loading }}
@@ -25,7 +40,7 @@
         <div class="hero__content container hero__content--{{ block.settings.text_color }}">
           <div class="hero__text">
             {%- if block.settings.eyebrow != blank -%}<p class="eyebrow">{{ block.settings.eyebrow }}</p>{%- endif -%}
-            <h2 class="hero__heading">{{ block.settings.heading }}</h2>
+            {%- if block.settings.heading != blank -%}<h2 class="hero__heading">{{ block.settings.heading }}</h2>{%- endif -%}
             {%- if block.settings.text != blank -%}<div class="hero__subheading">{{ block.settings.text }}</div>{%- endif -%}
             {%- if block.settings.button_label != blank -%}
               <a href="{{ block.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn--primary btn--lg">{{ block.settings.button_label }}</a>
@@ -63,8 +78,8 @@
       "type": "slide",
       "name": "Slide",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "Wide lifestyle photo, 2400 x 1200px recommended." },
-        { "type": "color", "id": "background", "label": "Background (behind image)", "default": "#FDE4EA" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Wide photo, 2400px wide recommended. Leave Heading and Text empty to show the photo whole (for photos that already include your logo and text)." },
+        { "type": "color", "id": "background", "label": "Background (behind image)", "default": "#F7E3DE" },
         { "type": "range", "id": "overlay", "label": "Dark overlay", "min": 0, "max": 60, "step": 5, "unit": "%", "default": 0 },
         { "type": "select", "id": "text_color", "label": "Text color", "default": "dark", "options": [ { "value": "dark", "label": "Plum" }, { "value": "light", "label": "White" } ] },
         { "type": "text", "id": "eyebrow", "label": "Small text above heading", "default": "Good mood. Daily." },
@@ -73,7 +88,7 @@
         { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
         { "type": "url", "id": "button_link", "label": "Button link" },
         { "type": "textarea", "id": "badge_text", "label": "Starburst badge text", "default": "NEW\nFLAVOURS" },
-        { "type": "color", "id": "badge_color", "label": "Badge color", "default": "#FFE6D8" }
+        { "type": "color", "id": "badge_color", "label": "Badge color", "default": "#FAE6DA" }
       ]
     }
   ],

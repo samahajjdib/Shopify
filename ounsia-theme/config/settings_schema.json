@@ -46,61 +46,61 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#FFFDFC"
+        "default": "#FCF7F4"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Body text",
-        "default": "#5A4A54"
+        "default": "#5E3A42"
       },
       {
         "type": "color",
         "id": "color_primary",
         "label": "Headings, logo, icons & outlines",
-        "default": "#7A6170"
+        "default": "#7B2E3E"
       },
       {
         "type": "color",
         "id": "color_button",
         "label": "Button background",
-        "default": "#F8CAD5"
+        "default": "#F2CFCB"
       },
       {
         "type": "color",
         "id": "color_button_text",
         "label": "Button text",
-        "default": "#4E3B46"
+        "default": "#6A2434"
       },
       {
         "type": "color",
         "id": "color_blush",
         "label": "Pastel pink",
-        "default": "#FDE4EA"
+        "default": "#F7E3DE"
       },
       {
         "type": "color",
         "id": "color_butter",
         "label": "Peach",
-        "default": "#FFE6D8"
+        "default": "#FAE6DA"
       },
       {
         "type": "color",
         "id": "color_lavender",
         "label": "Lilac",
-        "default": "#EEE6FA"
+        "default": "#F1E6EC"
       },
       {
         "type": "color",
         "id": "color_babyblue",
         "label": "Baby blue",
-        "default": "#DDEEFB"
+        "default": "#E6EDF0"
       },
       {
         "type": "color",
         "id": "color_mint",
         "label": "Pistachio",
-        "default": "#E5F3DA"
+        "default": "#E7ECDA"
       }
     ]
   },
