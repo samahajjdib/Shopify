@@ -1,3 +1,15 @@
+<style>
+  /* Badge text scales with the badge and stays inside the star's inner circle */
+  .starburst { width: 150px; height: 150px; container-type: inline-size; }
+  .starburst span {
+    display: block; max-width: 70%;
+    font-size: 15px; font-size: 10cqw;
+    line-height: 1.1; letter-spacing: 0; overflow-wrap: anywhere;
+  }
+  @media (max-width: 860px) {
+    .starburst { width: 116px; height: 116px; }
+  }
+</style>
 <section class="hero" data-slideshow data-autoplay="{{ section.settings.autoplay_seconds }}" style="--hero-height: {{ section.settings.height }}px;">
   <div class="hero__slides">
     {%- for block in section.blocks -%}
