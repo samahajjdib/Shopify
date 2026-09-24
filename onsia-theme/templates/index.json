@@ -14,7 +14,8 @@
             "text": "<p>Our Myo-Inositol & D-Chiro Inositol powder in a 4:1 ratio helps support hormonal balance, energy, clear skin and mood. Just mix & go.</p>",
             "button_label": "Shop now",
             "badge_text": "NEW\nFLAVOURS",
-            "badge_color": "#F8EDC9"
+            "badge_color": "#F8EDC9",
+            "button_link": "shopify://products/onsia-inositol-powder"
           }
         },
         "slide_2": {
@@ -25,10 +26,11 @@
             "text_color": "dark",
             "eyebrow": "More energy. Brighter days.",
             "heading": "Different flavours. Same happy you.",
-            "text": "<p>Berry Peach, Mixed Berry, Vanilla Bean and Tropical Mango. Subscribe and save on every box.</p>",
+            "text": "<p>Strawberry, Passion Fruit and Lime. Subscribe and save on every box.</p>",
             "button_label": "Find your flavour",
             "badge_text": "SUBSCRIBE\n& SAVE",
-            "badge_color": "#DDEEDC"
+            "badge_color": "#DDEEDC",
+            "button_link": "shopify://products/onsia-inositol-powder"
           }
         }
       },
@@ -100,15 +102,17 @@
           "settings": {
             "title": "Daily Pouches",
             "text": "30 sachets of your favourite flavour for a whole month.",
-            "tint": "#F6E1E4"
+            "tint": "#F6E1E4",
+            "link": "shopify://collections/shop-all"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
             "title": "Flavour Bundles",
-            "text": "Mix berry, vanilla & mango. Different flavours, same happy you.",
-            "tint": "#E6DFF5"
+            "text": "Strawberry, passion fruit & lime. Different flavours, same happy you.",
+            "tint": "#E6DFF5",
+            "link": "shopify://collections/shop-all"
           }
         },
         "c3": {
@@ -116,7 +120,8 @@
           "settings": {
             "title": "Mix & Go Sachets",
             "text": "Single-serve sticks for your bag, desk or gym.",
-            "tint": "#F8EDC9"
+            "tint": "#F8EDC9",
+            "link": "shopify://collections/shop-all"
           }
         },
         "c4": {
@@ -124,7 +129,8 @@
           "settings": {
             "title": "Gift Sets",
             "text": "Share the good mood with someone you love.",
-            "tint": "#DDEEDC"
+            "tint": "#DDEEDC",
+            "link": "shopify://collections/shop-all"
           }
         }
       },
@@ -226,10 +232,11 @@
       "settings": {
         "script_text": "Different flavours.",
         "heading": "Same happy you",
-        "text": "<p>Berry Peach, Mixed Berry, Vanilla Bean & Tropical Mango.</p>",
+        "text": "<p>Strawberry, Passion Fruit & Lime.</p>",
         "products_to_show": 4,
         "show_view_all": true,
-        "background": "#FFFBF8"
+        "background": "#FFFBF8",
+        "collection": "shop-all"
       }
     },
     "ritual": {
@@ -268,7 +275,8 @@
         "heading": "Your 30-second good mood ritual",
         "text": "<p>Delicious. Convenient. Effective.</p>",
         "button_label": "Find your flavour",
-        "background": "#F8EDC9"
+        "background": "#F8EDC9",
+        "button_link": "shopify://products/onsia-inositol-powder"
       }
     }
   },

@@ -13,7 +13,7 @@
           {% render 'product-card', product: product %}
         {%- endfor -%}
       {%- else -%}
-        {%- assign flavours = 'Berry Peach,Mixed Berry,Vanilla Bean,Tropical Mango' | split: ',' -%}
+        {%- assign flavours = 'Strawberry,Passion Fruit,Lime' | split: ',' -%}
         {%- for flavour in flavours -%}
           <div class="product-card">
             <div class="product-card__media-link product-card__media-link--{{ forloop.index }}">

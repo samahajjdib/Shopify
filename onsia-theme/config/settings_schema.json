@@ -69,25 +69,25 @@
       {
         "type": "color",
         "id": "color_blush",
-        "label": "Blush (Berry Peach)",
+        "label": "Blush (Strawberry)",
         "default": "#F6E1E4"
       },
       {
         "type": "color",
         "id": "color_lavender",
-        "label": "Lavender (Mixed Berry)",
+        "label": "Lavender",
         "default": "#E6DFF5"
       },
       {
         "type": "color",
         "id": "color_butter",
-        "label": "Butter (Vanilla Bean)",
+        "label": "Butter (Passion Fruit)",
         "default": "#F8EDC9"
       },
       {
         "type": "color",
         "id": "color_mint",
-        "label": "Mint (Tropical Mango)",
+        "label": "Mint (Lime)",
         "default": "#DDEEDC"
       }
     ]
