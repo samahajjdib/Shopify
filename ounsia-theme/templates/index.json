@@ -6,31 +6,33 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "background": "#F6E3DD",
+            "image": "shopify://shop_images/ounsia_background.jpg",
+            "background": "#f6e3dd",
             "overlay": 0,
             "text_color": "dark",
             "eyebrow": "",
             "heading": "",
             "text": "",
             "button_label": "Shop now",
+            "button_link": "shopify://products/ounsia-inositol-powder",
             "badge_text": "",
-            "badge_color": "#FAE6DA",
-            "button_link": "shopify://products/ounsia-inositol-powder"
+            "badge_color": "#fae6da"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "background": "#F6E3DD",
+            "image": "shopify://shop_images/Ounsia.jpg",
+            "background": "#f6e3dd",
             "overlay": 0,
             "text_color": "dark",
             "eyebrow": "",
             "heading": "",
             "text": "",
             "button_label": "Shop now",
+            "button_link": "shopify://products/ounsia-inositol-powder",
             "badge_text": "",
-            "badge_color": "#E7ECDA",
-            "button_link": "shopify://products/ounsia-inositol-powder"
+            "badge_color": "#e7ecda"
           }
         }
       },
@@ -80,6 +82,20 @@
             "icon": "glass",
             "text": "Mix & Go Sachets"
           }
+        },
+        "m6": {
+          "type": "badge",
+          "settings": {
+            "icon": "halal",
+            "text": "Halal"
+          }
+        },
+        "m7": {
+          "type": "badge",
+          "settings": {
+            "icon": "certificate",
+            "text": "ISO Certified"
+          }
         }
       },
       "block_order": [
@@ -87,10 +103,12 @@
         "m2",
         "m3",
         "m4",
-        "m5"
+        "m5",
+        "m6",
+        "m7"
       ],
       "settings": {
-        "background": "#E6EDF0",
+        "background": "#e6edf0",
         "speed": 40
       }
     },
@@ -100,36 +118,36 @@
         "c1": {
           "type": "card",
           "settings": {
+            "tint": "#f7e3de",
             "title": "Daily Pouches",
             "text": "30 sachets of your favourite flavour for a whole month.",
-            "tint": "#F7E3DE",
             "link": "shopify://collections/shop-all"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
+            "tint": "#f1e6ec",
             "title": "Flavour Bundles",
             "text": "Strawberry, passion fruit & lime. Different flavours, same happy you.",
-            "tint": "#F1E6EC",
             "link": "shopify://collections/shop-all"
           }
         },
         "c3": {
           "type": "card",
           "settings": {
+            "tint": "#fae6da",
             "title": "Mix & Go Sachets",
             "text": "Single-serve sticks for your bag, desk or gym.",
-            "tint": "#FAE6DA",
             "link": "shopify://collections/shop-all"
           }
         },
         "c4": {
           "type": "card",
           "settings": {
+            "tint": "#e7ecda",
             "title": "Gift Sets",
             "text": "Share the good mood with someone you love.",
-            "tint": "#E7ECDA",
             "link": "shopify://collections/shop-all"
           }
         }
@@ -140,10 +158,11 @@
         "c3",
         "c4"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Real self-care starts inside",
         "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Ounsia+ ritual.</p>",
-        "background": "#FCF7F4"
+        "background": "#fcf7f4"
       }
     },
     "benefits": {
@@ -191,7 +210,7 @@
       "settings": {
         "eyebrow": "More energy. Brighter days.",
         "heading": "One sachet, four good things",
-        "background": "#FCF7F4"
+        "background": "#fcf7f4"
       }
     },
     "checklist": {
@@ -222,9 +241,10 @@
         "i3"
       ],
       "settings": {
+        "image": "shopify://shop_images/powder.jpg",
         "image_position": "left",
-        "gradient_from": "#F7E3DE",
-        "gradient_to": "#E6EDF0"
+        "gradient_from": "#f7e3de",
+        "gradient_to": "#e6edf0"
       }
     },
     "featured": {
@@ -233,10 +253,10 @@
         "script_text": "Different flavours.",
         "heading": "Same happy you",
         "text": "<p>Strawberry, Passion Fruit & Lime.</p>",
+        "collection": "shop-all",
         "products_to_show": 4,
         "show_view_all": true,
-        "background": "#FCF7F4",
-        "collection": "shop-all"
+        "background": "#fcf7f4"
       }
     },
     "ritual": {
@@ -246,7 +266,7 @@
           "type": "step",
           "settings": {
             "title": "Tear",
-            "text": "Open one 7g sachet."
+            "text": "Open one 8g sachet."
           }
         },
         "s2": {
@@ -270,13 +290,14 @@
         "s3"
       ],
       "settings": {
+        "image": "shopify://shop_images/Background_ounsia.jpg",
         "image_position": "right",
         "script_text": "Mix & Go",
         "heading": "Your 30-second good mood ritual",
         "text": "<p>Delicious. Convenient. Effective.</p>",
         "button_label": "Find your flavour",
-        "background": "#FAE6DA",
-        "button_link": "shopify://products/ounsia-inositol-powder"
+        "button_link": "shopify://products/ounsia-inositol-powder",
+        "background": "#fae6da"
       }
     }
   },
