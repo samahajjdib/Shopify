@@ -6,7 +6,7 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "background": "#F6E1E4",
+            "background": "#FDE4EA",
             "overlay": 0,
             "text_color": "dark",
             "eyebrow": "Good mood. Daily.",
@@ -14,14 +14,14 @@
             "text": "<p>Our Myo-Inositol & D-Chiro Inositol powder in a 4:1 ratio helps support hormonal balance, energy, clear skin and mood. Just mix & go.</p>",
             "button_label": "Shop now",
             "badge_text": "NEW\nFLAVOURS",
-            "badge_color": "#F8EDC9",
+            "badge_color": "#FFE6D8",
             "button_link": "shopify://products/onsia-inositol-powder"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "background": "#E6DFF5",
+            "background": "#DDEEFB",
             "overlay": 0,
             "text_color": "dark",
             "eyebrow": "More energy. Brighter days.",
@@ -29,7 +29,7 @@
             "text": "<p>Strawberry, Passion Fruit and Lime. Subscribe and save on every box.</p>",
             "button_label": "Find your flavour",
             "badge_text": "SUBSCRIBE\n& SAVE",
-            "badge_color": "#DDEEDC",
+            "badge_color": "#E5F3DA",
             "button_link": "shopify://products/onsia-inositol-powder"
           }
         }
@@ -90,7 +90,7 @@
         "m5"
       ],
       "settings": {
-        "background": "#E6DFF5",
+        "background": "#DDEEFB",
         "speed": 40
       }
     },
@@ -102,7 +102,7 @@
           "settings": {
             "title": "Daily Pouches",
             "text": "30 sachets of your favourite flavour for a whole month.",
-            "tint": "#F6E1E4",
+            "tint": "#FDE4EA",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -111,7 +111,7 @@
           "settings": {
             "title": "Flavour Bundles",
             "text": "Strawberry, passion fruit & lime. Different flavours, same happy you.",
-            "tint": "#E6DFF5",
+            "tint": "#EEE6FA",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -120,7 +120,7 @@
           "settings": {
             "title": "Mix & Go Sachets",
             "text": "Single-serve sticks for your bag, desk or gym.",
-            "tint": "#F8EDC9",
+            "tint": "#FFE6D8",
             "link": "shopify://collections/shop-all"
           }
         },
@@ -129,7 +129,7 @@
           "settings": {
             "title": "Gift Sets",
             "text": "Share the good mood with someone you love.",
-            "tint": "#DDEEDC",
+            "tint": "#E5F3DA",
             "link": "shopify://collections/shop-all"
           }
         }
@@ -143,7 +143,7 @@
       "settings": {
         "heading": "Real self-care starts inside",
         "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Onsia+ ritual.</p>",
-        "background": "#FFFBF8"
+        "background": "#FFFDFC"
       }
     },
     "benefits": {
@@ -191,7 +191,7 @@
       "settings": {
         "eyebrow": "More energy. Brighter days.",
         "heading": "One sachet, four good things",
-        "background": "#FFFBF8"
+        "background": "#FFFDFC"
       }
     },
     "checklist": {
@@ -223,8 +223,8 @@
       ],
       "settings": {
         "image_position": "left",
-        "gradient_from": "#F6E1E4",
-        "gradient_to": "#E6DFF5"
+        "gradient_from": "#FDE4EA",
+        "gradient_to": "#DDEEFB"
       }
     },
     "featured": {
@@ -235,7 +235,7 @@
         "text": "<p>Strawberry, Passion Fruit & Lime.</p>",
         "products_to_show": 4,
         "show_view_all": true,
-        "background": "#FFFBF8",
+        "background": "#FFFDFC",
         "collection": "shop-all"
       }
     },
@@ -275,7 +275,7 @@
         "heading": "Your 30-second good mood ritual",
         "text": "<p>Delicious. Convenient. Effective.</p>",
         "button_label": "Find your flavour",
-        "background": "#F8EDC9",
+        "background": "#FFE6D8",
         "button_link": "shopify://products/onsia-inositol-powder"
       }
     }

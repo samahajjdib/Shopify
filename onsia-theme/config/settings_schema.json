@@ -46,49 +46,61 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#FFFBF8"
+        "default": "#FFFDFC"
       },
       {
         "type": "color",
         "id": "color_text",
-        "label": "Text",
-        "default": "#4A2230"
+        "label": "Body text",
+        "default": "#5A4A54"
       },
       {
         "type": "color",
         "id": "color_primary",
-        "label": "Primary (buttons, logo, headings)",
-        "default": "#6E2F3F"
+        "label": "Headings, logo, icons & outlines",
+        "default": "#7A6170"
       },
       {
         "type": "color",
-        "id": "color_primary_text",
-        "label": "Primary button text",
-        "default": "#FFFFFF"
+        "id": "color_button",
+        "label": "Button background",
+        "default": "#F8CAD5"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button text",
+        "default": "#4E3B46"
       },
       {
         "type": "color",
         "id": "color_blush",
-        "label": "Blush (Strawberry)",
-        "default": "#F6E1E4"
-      },
-      {
-        "type": "color",
-        "id": "color_lavender",
-        "label": "Lavender",
-        "default": "#E6DFF5"
+        "label": "Pastel pink",
+        "default": "#FDE4EA"
       },
       {
         "type": "color",
         "id": "color_butter",
-        "label": "Butter (Passion Fruit)",
-        "default": "#F8EDC9"
+        "label": "Peach",
+        "default": "#FFE6D8"
+      },
+      {
+        "type": "color",
+        "id": "color_lavender",
+        "label": "Lilac",
+        "default": "#EEE6FA"
+      },
+      {
+        "type": "color",
+        "id": "color_babyblue",
+        "label": "Baby blue",
+        "default": "#DDEEFB"
       },
       {
         "type": "color",
         "id": "color_mint",
-        "label": "Mint (Lime)",
-        "default": "#DDEEDC"
+        "label": "Pistachio",
+        "default": "#E5F3DA"
       }
     ]
   },

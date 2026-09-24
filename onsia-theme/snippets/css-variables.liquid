@@ -3,11 +3,15 @@
     --color-background: {{ settings.color_background }};
     --color-text: {{ settings.color_text }};
     --color-primary: {{ settings.color_primary }};
-    --color-primary-text: {{ settings.color_primary_text }};
+    --color-button: {{ settings.color_button }};
+    --color-button-text: {{ settings.color_button_text }};
+    --color-button-hover: {{ settings.color_button | color_darken: 6 }};
+    --color-primary-text: {{ settings.color_button_text }};
     --color-blush: {{ settings.color_blush }};
     --color-lavender: {{ settings.color_lavender }};
     --color-butter: {{ settings.color_butter }};
     --color-mint: {{ settings.color_mint }};
+    --color-babyblue: {{ settings.color_babyblue }};
     --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
     --font-heading-weight: {{ settings.font_heading.weight }};
     --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
