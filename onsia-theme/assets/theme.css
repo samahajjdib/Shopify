@@ -249,9 +249,6 @@ p { margin: 0 0 1em; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 [dir="rtl"] .marquee__track { animation-name: marquee-rtl; }
 @keyframes marquee-rtl { to { transform: translateX(50%); } }
-@media (prefers-reduced-motion: reduce) {
-  .marquee__track { animation: none; }
-}
 
 /* ============ Section heading ============ */
 .section-heading { text-align: center; max-width: 820px; margin: 0 auto 56px; }

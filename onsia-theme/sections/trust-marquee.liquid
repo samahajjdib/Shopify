@@ -1,4 +1,12 @@
 {%- comment -%} Scrolling strip of trust badges, e.g. Vegan / Gluten free / No artificial colors {%- endcomment -%}
+<style>
+  .marquee .marquee__track { animation: marquee var(--marquee-speed) linear infinite; will-change: transform; }
+  [dir="rtl"] .marquee .marquee__track { animation-name: marquee-rtl; }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee .marquee__track { animation-duration: calc(var(--marquee-speed) * 2); }
+  }
+</style>
 <section class="marquee" style="--marquee-bg: {{ section.settings.background }}; --marquee-speed: {{ section.settings.speed }}s;">
   <div class="marquee__track">
     {%- for i in (1..2) -%}
@@ -29,7 +37,7 @@
   "tag": "div",
   "settings": [
     { "type": "color", "id": "background", "label": "Background", "default": "#E6DFF5" },
-    { "type": "range", "id": "speed", "label": "Scroll duration (higher = slower)", "min": 10, "max": 80, "step": 5, "unit": "s", "default": 40 }
+    { "type": "range", "id": "speed", "label": "Scroll duration (higher = slower)", "min": 10, "max": 80, "step": 5, "unit": "s", "default": 30 }
   ],
   "blocks": [
     {
