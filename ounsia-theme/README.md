@@ -1,6 +1,6 @@
-# Onsia+ Shopify theme
+# Ounsia+ Shopify theme
 
-Custom Online Store 2.0 theme for **Onsia+ (أنسية)**, a women's Myo & D-Chiro
+Custom Online Store 2.0 theme for **Ounsia+ (أنسية)**, a women's Myo & D-Chiro
 Inositol powder brand. Tagline: "Good mood. Daily."
 
 ## Upload it

@@ -11,7 +11,7 @@
     },
     "search": {
       "title": "Search",
-      "placeholder": "Search Onsia+",
+      "placeholder": "Search Ounsia+",
       "submit": "Search",
       "no_results": "No results for \"{{ terms }}\". Try another word."
     },

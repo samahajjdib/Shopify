@@ -15,7 +15,7 @@
             "button_label": "Shop now",
             "badge_text": "NEW\nFLAVOURS",
             "badge_color": "#FFE6D8",
-            "button_link": "shopify://products/onsia-inositol-powder"
+            "button_link": "shopify://products/ounsia-inositol-powder"
           }
         },
         "slide_2": {
@@ -30,7 +30,7 @@
             "button_label": "Find your flavour",
             "badge_text": "SUBSCRIBE\n& SAVE",
             "badge_color": "#E5F3DA",
-            "button_link": "shopify://products/onsia-inositol-powder"
+            "button_link": "shopify://products/ounsia-inositol-powder"
           }
         }
       },
@@ -142,7 +142,7 @@
       ],
       "settings": {
         "heading": "Real self-care starts inside",
-        "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Onsia+ ritual.</p>",
+        "text": "<p>Made for women, by women who know how much your hormones shape your day. Find your Ounsia+ ritual.</p>",
         "background": "#FFFDFC"
       }
     },
@@ -276,7 +276,7 @@
         "text": "<p>Delicious. Convenient. Effective.</p>",
         "button_label": "Find your flavour",
         "background": "#FFE6D8",
-        "button_link": "shopify://products/onsia-inositol-powder"
+        "button_link": "shopify://products/ounsia-inositol-powder"
       }
     }
   },

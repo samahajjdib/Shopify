@@ -1,3 +1,10 @@
+<style>
+  /* Each flavour pill can have its own selected color (set in "Flavour colors") */
+  .product .pill[style*="--pill-color"]:hover { background: color-mix(in srgb, var(--pill-color) 45%, transparent); }
+  .product .pill[style*="--pill-color"].is-selected {
+    background: var(--pill-color); border-color: var(--pill-color); color: var(--color-button-text);
+  }
+</style>
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign selected_plan = product.selected_selling_plan_allocation.selling_plan -%}
 {%- if selected_plan == blank and product.requires_selling_plan -%}
@@ -66,12 +73,24 @@
       <input type="hidden" name="selling_plan" value="{{ selected_plan.id }}" data-selling-plan-input>
 
       {%- unless product.has_only_default_variant -%}
+        {%- assign pill_color_lines = section.settings.option_colors | newline_to_br | split: '<br />' -%}
         {%- for option in product.options_with_values -%}
           <fieldset class="product__option" data-option-index="{{ forloop.index0 }}">
             <legend class="product__label">{{ option.name }}</legend>
             <div class="pills">
               {%- for value in option.values -%}
-                <button type="button" class="pill{% if option.selected_value == value %} is-selected{% endif %}" data-option-value="{{ value | escape }}" aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">{{ value }}</button>
+                {%- liquid
+                  assign pill_color = ''
+                  assign value_key = value | downcase | strip
+                  for line in pill_color_lines
+                    assign parts = line | split: ':'
+                    assign line_key = parts.first | downcase | strip
+                    if line_key == value_key and parts.size > 1
+                      assign pill_color = parts.last | strip
+                    endif
+                  endfor
+                -%}
+                <button type="button" class="pill{% if option.selected_value == value %} is-selected{% endif %}"{% if pill_color != blank %} style="--pill-color: {{ pill_color }};"{% endif %} data-option-value="{{ value | escape }}" aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">{{ value }}</button>
               {%- endfor -%}
             </div>
           </fieldset>
@@ -210,6 +229,13 @@
   "name": "Product information",
   "settings": [
     { "type": "color", "id": "media_bg", "label": "Image background", "default": "#FBF3F5" },
+    {
+      "type": "textarea",
+      "id": "option_colors",
+      "label": "Flavour colors",
+      "info": "One per line as Flavour: color, e.g. Lime: #DDF2C8. The flavour's button turns this color when selected.",
+      "default": "Strawberry: #FAD1D1\nPassion Fruit: #FFF0B3\nLime: #DCF2C6"
+    },
     { "type": "checkbox", "id": "default_to_subscription", "label": "Pre-select subscription", "default": true },
     { "type": "checkbox", "id": "show_subscription_preview", "label": "Show subscription option before a plan is set up", "info": "Shows a \"coming soon\" monthly option until you add a plan with the Shopify Subscriptions app.", "default": true },
     { "type": "text", "id": "subscription_label", "label": "Subscription preview title", "default": "Monthly subscription" },
