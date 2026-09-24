@@ -17,7 +17,7 @@
   .hero__slide--image-only .hero__content::before { display: none; }
   .hero__image--mobile { display: none; }
   @media (max-width: 860px) {
-    /* Phones: photo on top at full width, button underneath instead of covering the photo */
+    /* Phones: photo shown whole at full width, small button over its bottom-left corner */
     .hero__slide--image-only { display: block; aspect-ratio: auto; background: var(--color-background); }
     .hero__slide--image-only .hero__image {
       position: static; display: block; width: 100%; height: auto;
@@ -26,9 +26,12 @@
     .hero__slide--image-only .hero__image--mobile { display: block; }
     .hero__slide--image-only.has-mobile-image .hero__image--desktop { display: none; }
     .hero__slide--image-only .hero__overlay { display: none; }
-    .hero__slide--image-only .hero__content { padding: 14px 16px 16px; align-items: flex-start; }
-    .hero__slide--image-only .btn--lg { padding: 12px 28px; font-size: 13px; }
-    .hero:has(.hero__slide--image-only) .hero__dots { bottom: 36px; left: auto; right: 16px; transform: none; }
+    .hero__slide--image-only .hero__content {
+      position: absolute; left: 0; right: 0; bottom: 0; width: 100%;
+      padding: 0 12px 12px; align-items: flex-start;
+    }
+    .hero__slide--image-only .btn--lg { padding: 8px 16px; font-size: 11px; letter-spacing: .06em; }
+    .hero:has(.hero__slide--image-only) .hero__dots { bottom: 20px; left: auto; right: 14px; transform: none; }
   }
 </style>
 <section class="hero" data-slideshow data-autoplay="{{ section.settings.autoplay_seconds }}" style="--hero-height: {{ section.settings.height }}px;">
