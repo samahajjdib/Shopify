@@ -447,6 +447,12 @@ p { margin: 0 0 1em; }
 .purchase-option__name { font-weight: 700; font-size: 18px; color: var(--color-primary); flex: 1; }
 .purchase-option__price { font-weight: 700; font-size: 18px; color: var(--color-primary); white-space: nowrap; }
 .purchase-option__price s { font-weight: 400; opacity: .55; margin-inline-end: 4px; }
+.purchase-option.is-disabled { cursor: default; }
+.purchase-option.is-disabled .purchase-option__head input { opacity: .5; }
+.purchase-option__soon {
+  display: inline-block; margin-inline-start: 8px; padding: 2px 10px; border-radius: 20px;
+  background: rgba(255,255,255,.75); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; vertical-align: middle;
+}
 .purchase-option__perks { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
 .purchase-option__perks li { display: flex; align-items: center; gap: 10px; }
 .purchase-option__perks .icon {

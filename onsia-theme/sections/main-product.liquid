@@ -79,8 +79,8 @@
       {%- endunless -%}
 
       {%- comment -%}
-        Subscribe & save: appears automatically once you add a subscription plan to this product
-        (e.g. with the free Shopify Subscriptions app). Otherwise only the one-time price shows.
+        Subscribe & save: real plans come from the Shopify Subscriptions app. Until a plan exists,
+        a "coming soon" subscription card previews the monthly price so both options always show.
       {%- endcomment -%}
       <div class="purchase-options" data-purchase-options>
         {%- for group in product.selling_plan_groups -%}
@@ -108,8 +108,27 @@
           {%- endfor -%}
         {%- endfor -%}
 
+        {%- if product.selling_plan_groups.size == 0 and section.settings.show_subscription_preview -%}
+          <div class="purchase-option purchase-option--subscription is-disabled" aria-disabled="true">
+            <span class="purchase-option__head">
+              <input type="radio" name="purchase_option" disabled>
+              <span class="purchase-option__name">{{ section.settings.subscription_label }} <span class="purchase-option__soon">{{ 'products.product.coming_soon' | t }}</span></span>
+              <span class="purchase-option__price">{{ section.settings.subscription_preview_price }}</span>
+            </span>
+            {%- if section.settings.subscription_perks != blank -%}
+              <ul class="purchase-option__perks">
+                {%- assign perks = section.settings.subscription_perks | newline_to_br | split: '<br />' -%}
+                {%- for perk in perks -%}
+                  {%- assign perk_text = perk | strip -%}
+                  {%- if perk_text != blank -%}<li>{% render 'icon', name: 'check' %}{{ perk_text }}</li>{%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
         {%- unless product.requires_selling_plan -%}
-          <label class="purchase-option{% if selected_plan == blank %} is-selected{% endif %}"{% if product.selling_plan_groups.size == 0 %} hidden{% endif %}>
+          <label class="purchase-option{% if selected_plan == blank %} is-selected{% endif %}"{% if product.selling_plan_groups.size == 0 and section.settings.show_subscription_preview == false %} hidden{% endif %}>
             <span class="purchase-option__head">
               <input type="radio" name="purchase_option" value="" data-plan-radio{% if selected_plan == blank %} checked{% endif %}>
               <span class="purchase-option__name">{{ 'products.product.one_time' | t }}</span>
@@ -192,11 +211,14 @@
   "settings": [
     { "type": "color", "id": "media_bg", "label": "Image background", "default": "#FBF3F5" },
     { "type": "checkbox", "id": "default_to_subscription", "label": "Pre-select subscription", "default": true },
+    { "type": "checkbox", "id": "show_subscription_preview", "label": "Show subscription option before a plan is set up", "info": "Shows a \"coming soon\" monthly option until you add a plan with the Shopify Subscriptions app.", "default": true },
+    { "type": "text", "id": "subscription_label", "label": "Subscription preview title", "default": "Monthly subscription" },
+    { "type": "text", "id": "subscription_preview_price", "label": "Subscription preview price", "default": "$30.00" },
     {
       "type": "textarea",
       "id": "subscription_perks",
       "label": "Subscription perks (one per line)",
-      "default": "Delivered every month\nSave on every order\nPause, skip or cancel anytime\nFree shipping"
+      "default": "Auto-charged every month\nSave $9.90 on every box\nPause, skip or cancel anytime"
     }
   ],
   "blocks": [
